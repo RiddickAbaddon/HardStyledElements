@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+
+   <style>
+   .hse-select-container {
+      position: relative;
+      background-color: rgb(48, 48, 48);
+      color: white;
+      display: inline-flex;
+      box-sizing: border-box;
+      height: 40px;
+      width: 200px;
+      flex-direction: column;
+      user-select: none;
+      z-index: 1;
+   }
+
+   .hse-select-container .hse-select {
+      padding: 10px 30px;
+      position: relative;
+   }
+
+   .hse-select-container .hse-select:before {
+      content: "";
+      position: absolute;
+      display: block;
+      border-right: 4px solid white;
+      border-bottom: 4px solid white;
+      border-left: 4px solid transparent;
+      border-top: 4px solid transparent;
+      right: 11px;
+      top: 50%;
+      width: 0;
+      height: 0;
+      opacity: 0.4;
+      transform: translateY(-5px) rotate(45deg);
+   }
+
+   .hse-select-container.hse-expanded .hse-select:before {
+      transform: translateY(0) rotate(-135deg);
+   }
+
+   .hse-select-container:hover .hse-select:before, .hse-select-container.hse-expanded .hse-select:before {
+      opacity: 1;
+   }
+
+   .hse-select-container .hse-options {
+      position: absolute;
+      top: 38px;
+      left: 0;
+      display: none;
+      background-color: rgb(48, 48, 48);
+      border-top: 1px solid gray;
+      padding: 10px 0;
+      width: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+   }
+
+   .hse-select-container .hse-options .hse-option {
+      padding: 10px 30px;
+   }
+
+   .hse-select-container .hse-options .hse-option:hover {
+      background-color: rgb(68, 68, 68);
+   }
+
+   .hse-select-container .hse-options .hse-option.hse-selected {
+      border: 1px dotted gray;
+   }
+
+   .hse-select-container.hse-expanded .hse-options {
+      display: block;
+   }
+
+   .hse-checkbox {
+      display: inline-block;
+      background-color: rgb(48, 48, 48);
+      width: 20px;
+      height: 20px;
+      position: relative;
+      user-select: none;
+   }
+
+   .hse-checkbox-mark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 4px;
+      border-bottom: 3px solid lightgray;
+      border-left: 3px solid lightgray;
+      transform: translate(-50%, -70%) rotate(-45deg);
+      display: none;
+   }
+
+   .hse-checkbox.hse-checked .hse-checkbox-mark {
+      display: block;
+   }
+
+   .hse-radio {
+      display: inline-block;
+      background-color: rgb(48, 48, 48);
+      width: 20px;
+      height: 20px;
+      position: relative;
+      user-select: none;
+      border-radius: 50%;
+      padding: 6px;
+      box-sizing: border-box;
+   }
+
+   .hse-radio-mark {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: lightgray;
+      display: none;
+   }
+
+   .hse-radio.hse-checked .hse-radio-mark {
+      display: block;
+   }
+
+   .hse-file-container {
+      background-color: rgb(48, 48, 48);
+      color: white;
+      display: inline-flex;
+      padding: 15px;
+      align-items: center;
+      cursor: pointer;
+   }
+
+   .hse-file-button {
+      border: 1px solid lightgray;
+      padding: 5px 15px;
+   }
+
+   .hse-file-text {
+      padding-left: 15px;
+   }
+
+   .hse-file-container:hover .hse-file-button {
+      background-color: rgb(68, 68, 68);
+   }
+
+   .hse-multiselect {
+      background-color: rgb(48, 48, 48);
+      color: white;
+      box-sizing: border-box;
+      width: 200px;
+      user-select: none;
+      padding: 10px 0;
+      max-height: 200px;
+      overflow-y: auto;
+   }
+
+   .hse-multiselect .hse-option {
+      padding: 10px 30px 11px 10px;
+   }
+
+   .hse-multiselect .hse-option .hse-multiselect-mark {
+      display: inline-block;
+      width: 8px;
+      height: 4px;
+      border-bottom: 3px solid lightgray;
+      border-left: 3px solid lightgray;
+      transform: translateY(-3px) rotate(-45deg);
+      margin-right: 11px;
+      opacity: 0;
+   }
+
+   .hse-multiselect .hse-option.hse-selected .hse-multiselect-mark {
+      opacity: 1;
+   }
+
+   .hse-multiselect .hse-option:hover {
+      background-color: rgb(68, 68, 68);
+   }
+   </style>
+</head>
+<body>
+   <select name="select" class="select select2">
+      <option value="1">Option 1</option>
+      <option value="2" selected>Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+      <option value="6">Option 6</option>
+      <option value="7">Option 7</option>
+      <option value="8">Option 8</option>
+   </select>
+   <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo voluptatem, quidem fugiat minima labore sint esse dolor tenetur cum praesentium repudiandae voluptates magni distinctio corrupti dolorum consectetur, eligendi dolore reprehenderit eum, porro provident laudantium quam quis. Perspiciatis, officiis facilis, dolores deserunt eligendi in incidunt aliquid laboriosam impedit tempora vero fugiat.
+   </p>
+   <label>
+      <input type="checkbox" name="checkbox1" checked> Checkbox 1 <br>
+   </label>
+   <label>
+      <input type="checkbox" name="checkbox2"> Checkbox 2 <br>
+   </label>
+   <input type="checkbox" name="checkbox3"> Checkbox 3 without label<br>
+   <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo voluptatem, quidem fugiat minima labore sint esse dolor tenetur cum praesentium repudiandae voluptates magni distinctio corrupti dolorum consectetur, eligendi dolore reprehenderit eum, porro provident laudantium quam quis. Perspiciatis, officiis facilis, dolores deserunt eligendi in incidunt aliquid laboriosam impedit tempora vero fugiat.
+   </p>
+   <label>
+      <input type="radio" name="radio1" value="1"> Radio 1 <br>
+   </label>
+
+   <label>
+      <input type="radio" name="radio1" value="2" checked> Radio 2 <br>
+   </label>
+   <input type="radio" name="radio1" value="3"> Radio 3 without label<br>
+
+   <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo voluptatem, quidem fugiat minima labore sint esse dolor tenetur cum praesentium repudiandae voluptates magni distinctio corrupti dolorum consectetur, eligendi dolore reprehenderit eum, porro provident laudantium quam quis. Perspiciatis, officiis facilis, dolores deserunt eligendi in incidunt aliquid laboriosam impedit tempora vero fugiat.
+   </p>
+
+   <input type="file" name="file" data-button="Wybierz plik" data-nofile="Nie wybrano pliku">
+
+   <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo voluptatem, quidem fugiat minima labore sint esse dolor tenetur cum praesentium repudiandae voluptates magni distinctio corrupti dolorum consectetur, eligendi dolore reprehenderit eum, porro provident laudantium quam quis. Perspiciatis, officiis facilis, dolores deserunt eligendi in incidunt aliquid laboriosam impedit tempora vero fugiat.
+   </p>
+
+   <select multiple name="select-multiple">
+      <option value="1">Option 1</option>
+      <option value="2" selected>Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+      <option value="6">Option 6</option>
+      <option value="7">Option 7</option>
+      <option value="8">Option 8</option>
+   </select>
+</body>
+</html>
