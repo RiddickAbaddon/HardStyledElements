@@ -300,10 +300,16 @@ class HardStyledElements {
 
    fileChange(element, container) {
       let fullPath = element.value
-      let startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
-      let filename = fullPath.substring(startIndex);
-      if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
-         filename = filename.substring(1);
+      let filename = ''
+
+      if(fullPath !== '') {
+         let startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+         filename = fullPath.substring(startIndex);
+         if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+         }
+      } else {
+         filename = element.dataset.nofile
       }
 
       container.childNodes[1].innerText = filename
